@@ -81,6 +81,7 @@ def test_process_issue_skips_non_merged(run_releasetool_tag):
     run_releasetool_tag.assert_not_called()
 
 
+@patch("autorelease.tag.LANGUAGE_ALLOWLIST", ["java"])
 @patch("autorelease.kokoro.trigger_build")
 @patch("autorelease.tag.run_releasetool_tag")
 def test_process_issue_triggers_kokoro(run_releasetool_tag, trigger_build):
@@ -103,6 +104,7 @@ def test_process_issue_triggers_kokoro(run_releasetool_tag, trigger_build):
     trigger_build.assert_called_once()
 
 
+@patch("autorelease.tag.LANGUAGE_ALLOWLIST", ["java"])
 @patch("autorelease.kokoro.trigger_build")
 @patch("autorelease.tag.run_releasetool_tag")
 def test_process_issue_skips_kokoro_if_no_job_name(run_releasetool_tag, trigger_build):

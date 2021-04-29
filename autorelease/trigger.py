@@ -17,7 +17,7 @@
 from autorelease import common, github, kokoro, reporter
 from releasetool.commands import tag
 
-LANGUAGE_ALLOWLIST = []
+LANGUAGE_ALLOWLIST = ["java"]
 ORGANIZATIONS_TO_SCAN = ["googleapis", "GoogleCloudPlatform"]
 
 
