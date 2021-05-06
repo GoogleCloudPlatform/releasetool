@@ -4,6 +4,13 @@
 
 [1]: https://pypi.org/project/gcp-releasetool/#history
 
+### [1.6.1](https://www.github.com/googleapis/releasetool/compare/v1.6.0...v1.6.1) (2021-05-06)
+
+
+### Bug Fixes
+
+* revert to using importlib for dynamic module loading ([#326](https://www.github.com/googleapis/releasetool/issues/326)) ([56a75c8](https://www.github.com/googleapis/releasetool/commit/56a75c800875e7420405559f626683731e56fb5b))
+
 ## [1.6.0](https://www.github.com/googleapis/releasetool/compare/v1.5.0...v1.6.0) (2021-05-03)
 
 
