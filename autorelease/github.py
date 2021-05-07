@@ -90,13 +90,16 @@ class GitHub:
             url = response.links.get("next", {}).get("url")
 
     def list_org_issues(
-        self, org: str, state: str = None, labels: str = None
+        self, org: str, state: str = None, labels: str = None, created_after: str = None
     ) -> Generator[dict, None, None]:
         url = f"{self.GITHUB_ROOT}/search/issues?q=org:{quote(org)}+state:{quote(state)}+archived:false"
         if labels:
             # Note: GitHub query API expects label to be enclosed in quotes:
             quotedLabels = '"' + labels + '"'
             url += f"+label:{quote(quotedLabels)}"
+        if created_after:
+            url += f"+created:>{created_after}"
+        print(url)
         # GitHub sometimes returns 5xx errors for this request.
         # Retry after 500, 502 response up to 4 times.
         max_retries = Retry(status=4, status_forcelist=[500, 502])

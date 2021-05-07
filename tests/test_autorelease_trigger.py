@@ -49,10 +49,16 @@ def test_processes_issues(
     list_org_issues.side_effect = [[pr1, pr2]]
     trigger.main("github-token", "kokoro-credentials")
     list_org_issues.assert_any_call(
-        org="googleapis", state="closed", labels="autorelease: tagged"
+        org="googleapis",
+        state="closed",
+        labels="autorelease: tagged",
+        created_after="2021-04-01",
     )
     list_org_issues.assert_any_call(
-        org="GoogleCloudPlatform", state="closed", labels="autorelease: tagged"
+        org="GoogleCloudPlatform",
+        state="closed",
+        labels="autorelease: tagged",
+        created_after="2021-04-01",
     )
     assert trigger_kokoro_build_for_pull_request.call_count == 2
 
